@@ -34,7 +34,11 @@ export default function Navigation({ isBgLight, ...props }: NavigationProps) {
 	]
 
 	return (
-		<nav className='flex items-center justify-between px-[7.5rem] pt-7 text-2xl text-black'>
+		<nav
+			className={clsx('flex items-center justify-between px-[7.5rem] pt-7 text-2xl', {
+				'text-light': isBgLight,
+			})}
+		>
 			<Logo />
 			<div className='flex items-center'>
 				<ul className='flex gap-10'>
@@ -43,7 +47,7 @@ export default function Navigation({ isBgLight, ...props }: NavigationProps) {
 							<Link
 								href={href}
 								key={'link-' + caption.replace(' ', '-')}
-								className='capitalize hover:text-black'
+								className='capitalize'
 							>
 								{caption}
 							</Link>
@@ -56,18 +60,24 @@ export default function Navigation({ isBgLight, ...props }: NavigationProps) {
 						<Button
 							as={Link}
 							href={'/auth'}
-							backgroundClassName='bg-highlight-1'
+							backgroundClassName={clsx({ 'bg-white': isBgLight, 'bg-highlight-1': !isBgLight })}
 							generalClassName='rounded-full '
-							className='border-highlight-1 border-4 px-12 py-3 font-medium capitalize text-light hover:text-normal'
+							className={clsx('border-4 px-12 py-3 font-medium capitalize', {
+								'border-white text-normal hover:text-light': isBgLight,
+								'border-highlight-1 text-light hover:text-normal': !isBgLight,
+							})}
 						>
 							login
 						</Button>
 						<Button
 							as={Link}
 							href={'/auth'}
-							backgroundClassName='bg-highlight-2'
+							backgroundClassName='bg-white-03'
 							generalClassName='rounded-full '
-							className='border-highlight-2 border-4 px-12 py-3 font-medium capitalize text-light hover:text-normal'
+							className={clsx('border-4 px-12 py-3 font-medium capitalize text-light', {
+								'border-white-03': isBgLight,
+								'border-highlight-2 hover:text-normal': !isBgLight,
+							})}
 						>
 							sign up
 						</Button>
