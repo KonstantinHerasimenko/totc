@@ -20,9 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} antialiased bg-background text-text`}
+        className={`${poppins.variable} antialiased bg-normal text-normal`}
+        
       >
-        {children}
+          {children}
       </body>
     </html>
   );

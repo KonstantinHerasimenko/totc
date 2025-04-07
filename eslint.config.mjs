@@ -15,7 +15,12 @@ const eslintConfig = [
 		extends: ['next/core-web-vitals', 'next/typescript'],
 		settings: {
 			tsconfigRootDir: __dirname,
+			
 		},
+		rules:{
+			"no-unused-vars": "off",
+    	"@typescript-eslint/no-unused-vars": "off"
+		}
 	}),
 ]
 
