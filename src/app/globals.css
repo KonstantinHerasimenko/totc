@@ -11,6 +11,10 @@ strong{
   font-weight: 700;
 }
 
+p{
+  @apply text-paragraph;
+}
+
 /*
 TODO:delete
 @theme inline {
