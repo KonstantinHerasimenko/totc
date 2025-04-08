@@ -7,6 +7,10 @@
   --foreground: #171717;
 }
 
+strong{
+  font-weight: 700;
+}
+
 /*
 TODO:delete
 @theme inline {

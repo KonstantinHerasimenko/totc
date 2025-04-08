@@ -1,3 +1,5 @@
+import Heading from "@/components/ui/heading"
+
 interface achievement {
 	title: string
 	label: string
@@ -28,21 +30,26 @@ export default function Achievements() {
 	]
 
 	return (
-		<section className='text-center flex flex-col items-center'>
-			<h2 className='mb-4 text-5xl font-bold text-title'>Our Success</h2>
-			<p className='mb-[6.25rem] text-lg'>
-				Ornare id fames interdum porttitor nulla turpis etiam. Diam vitae sollicitudin at nec
-				<br /> nam et pharetra gravida. Adipiscing a quis ultrices eu ornare tristique vel nisl
-				orci.
-			</p>
+		<section className='flex flex-col items-center text-center'>
+			<Heading
+				className='mb-[6.25rem]'
+				title='Our Success'
+				description={
+					<>
+						Ornare id fames interdum porttitor nulla turpis etiam. Diam vitae sollicitudin at nec
+						<br /> nam et pharetra gravida. Adipiscing a quis ultrices eu ornare tristique vel nisl
+						orci.
+					</>
+				}
+			/>
 			<ul className='flex gap-24'>
 				{achievements.map(({ title, label }: achievement) => {
 					return (
 						<li
-							className=''
+							className='text-center'
 							key={'achievements-' + label.replace(' ', '-')}
 						>
-							<h1 className='bg-gradient-to-r from-[#136CB5] to-[#49BBBD] text-transparent bg-clip-text text-8xl uppercase'>
+							<h1 className='bg-gradient-to-r from-[#136CB5] to-[#49BBBD] bg-clip-text text-8xl uppercase text-transparent'>
 								{title}
 							</h1>
 							<h3 className='text-3xl'>{label}</h3>
