@@ -8,7 +8,7 @@
 }
 
 strong{
-  font-weight: 700;
+  @apply font-bold text-highlight-1
 }
 
 p{

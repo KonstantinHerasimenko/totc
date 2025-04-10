@@ -1,6 +1,7 @@
 import AboutUs from "@/components/layout/Home/aboutUs";
 import Achievements from "@/components/layout/Home/achievements";
 import Advantages from "@/components/layout/Home/advantages";
+import Features from "@/components/layout/Home/features";
 import Header from "@/components/layout/Home/header";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Achievements/>
 			<Advantages/>
 			<AboutUs/>
+			<Features/>
 		</div>
 	)
 }
