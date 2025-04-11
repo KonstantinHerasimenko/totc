@@ -1,11 +1,13 @@
+'use client'
 import Heading from '@/components/ui/heading'
 import importAll from '@/utils/importAll'
 import Image, { StaticImageData } from 'next/image'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import Grid from '@/assets/icons/grid.svg'
 import Layer from '@/assets/icons/layer.svg'
 import Group from '@/assets/icons/group-blue.svg'
 import clsx from 'clsx'
+import Button from '@/components/ui/button'
 
 const images = importAll(
 	require.context('../../../assets/images/features/', false, /\.(?:jpg|jpeg|png|gif|webp)$/),
@@ -17,6 +19,8 @@ interface feature {
 }
 
 export default function Features() {
+	const [featuresCount, setFeaturesCount] = useState(5)
+
 	const features: feature[] = [
 		{
 			title: (
@@ -100,10 +104,62 @@ export default function Features() {
 				</p>
 			),
 		},
+		{
+			title: (
+				<>
+					Assessments, <strong>Quizzes</strong>, Tests
+				</>
+			),
+			content: (
+				<p>
+					Easily launch live assignments, quizzes, and tests. Student results are automatically
+					entered in the online gradebook.
+				</p>
+			),
+		},
+		{
+			title: (
+				<>
+					<strong>Class Management</strong> Tools for Educators
+				</>
+			),
+			content: (
+				<p>
+					Class provides tools to help run and manage the class such as Class Roster, Attendance,
+					and more. With the Gradebook, teachers can review and grade tests and quizzes in
+					real-time.
+				</p>
+			),
+		},
+		{
+			title: (
+				<>
+					One-on-One <strong>Discussions</strong>
+				</>
+			),
+			content: (
+				<p>
+					Teachers and teacher assistants can talk with students privately without leaving the Zoom
+					environment.
+				</p>
+			),
+		},
 	]
 
+	function seeMoreFeatures() {
+		setFeaturesCount((previous) => {
+			if (features.length === previous) {
+				return 5
+			}
+			if (features.length > previous) {
+				return Math.min(previous + 5, features.length)
+			}
+			return previous
+		})
+	}
+
 	return (
-		<section>
+		<section className='flex flex-col items-center'>
 			<Heading
 				className='mb-24'
 				title={
@@ -113,15 +169,15 @@ export default function Features() {
 				}
 				description='This very extraordinary feature, can make learning activities more efficient'
 			/>
-			<div className='flex w-full flex-col gap-40 px-40'>
-				{features.map(({ title, content }: feature, index) => {
+			<div className='mb-32 flex w-full flex-col gap-40 px-40'>
+				{features.slice(0, featuresCount).map(({ title, content }: feature, index) => {
 					return (
 						<section
 							key={`feature-${index}`}
 							className={clsx('flex w-full items-center gap-32', { 'flex-row-reverse': index % 2 })}
 						>
 							<Image
-								src={images[index]}
+								src={images[index % images.length]}
 								alt=''
 								className='w-1/2'
 							/>
@@ -135,6 +191,17 @@ export default function Features() {
 					)
 				})}
 			</div>
+			<Button
+				as={'button'}
+				onClick={() => seeMoreFeatures()}
+				generalClassName='rounded-full border'
+				className={clsx(
+					'border-4 px-12 py-3 font-medium capitalize',
+					'border-highlight-1 font-light text-highlight-1',
+				)}
+			>
+				{featuresCount === features.length ? 'hide all' : 'see more features'}
+			</Button>
 		</section>
 	)
 }

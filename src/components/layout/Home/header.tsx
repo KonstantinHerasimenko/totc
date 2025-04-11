@@ -15,7 +15,7 @@ export default function Header() {
 					<strong className='font-bold text-highlight-2'>Studying</strong> Online is now
 					<br /> much easier
 				</h1>
-				<p className='mb-14'>
+				<p className='mb-14 text-white'>
 					TOTC is an interesting platform that will teach
 					<br /> you in more an interactive way
 				</p>
